@@ -1,7 +1,7 @@
 use super::*;
 use crate::{algebra::AsFloatT, solver::CoreSettings};
-use std::collections::HashMap;
-use std::ops::Range;
+use alloc::collections::HashMap;
+use core::ops::Range;
 
 // -------------------------------------
 // default composite cone type
@@ -149,10 +149,10 @@ where
     pub fn is_empty(&self) -> bool {
         self.cones.is_empty()
     }
-    pub fn iter(&self) -> std::slice::Iter<'_, SupportedCone<T>> {
+    pub fn iter(&self) -> core::slice::Iter<'_, SupportedCone<T>> {
         self.cones.iter()
     }
-    pub fn iter_mut(&mut self) -> std::slice::IterMut<'_, SupportedCone<T>> {
+    pub fn iter_mut(&mut self) -> core::slice::IterMut<'_, SupportedCone<T>> {
         self.cones.iter_mut()
     }
     pub(crate) fn type_count(&self, tag: SupportedConeTag) -> usize {

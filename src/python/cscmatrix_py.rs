@@ -5,7 +5,7 @@ use crate::algebra::CscMatrix;
 use core::ops::Deref;
 use pyo3::exceptions::PyTypeError;
 use pyo3::{prelude::*, PyClass};
-use std::{cmp::Ordering, fmt::Write, io};
+use core::{cmp::Ordering, fmt::Write, io};
 
 //We can't implement the foreign trait FromPyObject directly on CscMatrix
 //since it is outside the crate, so put a dummy wrapper around it here.

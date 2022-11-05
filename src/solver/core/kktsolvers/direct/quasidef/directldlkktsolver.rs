@@ -296,7 +296,7 @@ where
                 break;
             } else {
                 //just swap instead of copying to x
-                std::mem::swap(x, dx);
+                core::mem::swap(x, dx);
             }
         }
         //NB: "success" means only we had a finite valued result

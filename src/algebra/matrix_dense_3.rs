@@ -2,7 +2,7 @@
 
 use super::{FloatT, VectorMath};
 use crate::algebra::*;
-use std::ops::{Index, IndexMut};
+use core::ops::{Index, IndexMut};
 
 // Dense matrix types are restricted to the crate
 // NB: Implements a basic symmetric 3x3 container

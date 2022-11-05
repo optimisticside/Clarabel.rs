@@ -4,7 +4,7 @@
 use crate::solver::core::{cones::SupportedConeT, cones::SupportedConeT::*};
 use core::ops::Deref;
 use pyo3::{exceptions::PyTypeError, prelude::*};
-use std::fmt::Write;
+use core::fmt::Write;
 
 // generic Python display functionality for cone objects
 fn __repr__cone(name: &str, dim: usize) -> String {

@@ -14,7 +14,7 @@ use crate::solver::{
 use num_derive::ToPrimitive;
 use num_traits::ToPrimitive;
 use pyo3::prelude::*;
-use std::fmt::Write;
+use core::fmt::Write;
 
 //Here we end up repeating several datatypes defined internally
 //in the Clarabel default implementation.   We would prefer

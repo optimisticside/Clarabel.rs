@@ -50,11 +50,11 @@ impl<T> SupportedConeT<T> {
     }
 }
 
-impl<T> std::fmt::Display for SupportedConeT<T>
+impl<T> core::fmt::Display for SupportedConeT<T>
 where
     T: FloatT,
 {
-    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
         write!(f, "{}", &self.as_tag().as_str())
     }
 }

@@ -1,6 +1,6 @@
-use std::collections::HashMap;
-use std::ops::{Deref, DerefMut};
-use std::time::{Duration, Instant};
+use alloc::collections::HashMap;
+use core::ops::{Deref, DerefMut};
+use core::time::{Duration, Instant};
 
 #[derive(Debug, Default)]
 struct InnerTimer {

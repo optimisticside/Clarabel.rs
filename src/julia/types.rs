@@ -3,7 +3,7 @@
 use crate::algebra::CscMatrix;
 use crate::solver::implementations::default::*;
 use num_derive::FromPrimitive;
-use std::slice;
+use core::slice;
 
 // The types defined here are for exchanging data
 // between Rust and Julia.
@@ -17,7 +17,7 @@ pub(crate) struct VectorJLRS<T> {
 
 impl<T> VectorJLRS<T>
 where
-    T: std::clone::Clone + std::fmt::Debug,
+    T: core::clone::Clone + core::fmt::Debug,
 {
     pub(crate) fn to_slice(&self) -> &[T] {
         assert!(!self.p.is_null());
@@ -37,7 +37,7 @@ impl From<&VectorJLRS<i64>> for Vec<usize> {
 
 impl<T> From<&VectorJLRS<T>> for Vec<T>
 where
-    T: std::clone::Clone + std::fmt::Debug,
+    T: core::clone::Clone + core::fmt::Debug,
 {
     fn from(v: &VectorJLRS<T>) -> Self {
         let sl = if v.len > 0 { v.to_slice() } else { &[] };
@@ -47,13 +47,13 @@ where
 
 impl<T> From<&Vec<T>> for VectorJLRS<T>
 where
-    T: std::clone::Clone + std::fmt::Debug,
+    T: core::clone::Clone + core::fmt::Debug,
 {
     fn from(v: &Vec<T>) -> Self {
         let mut v = v.clone();
         let p = v.as_mut_ptr();
         let len = v.len();
-        std::mem::forget(v);
+        core::mem::forget(v);
         VectorJLRS::<T> { p, len }
     }
 }

@@ -10,7 +10,7 @@ use crate::solver::{
 };
 use num_traits::FromPrimitive;
 use serde_json::*;
-use std::{ffi::CStr, os::raw::c_void};
+use core::ffi::{CStr, c_void};
 
 // functions for converting solver to / from c void pointers
 
@@ -63,7 +63,7 @@ pub(crate) extern "C" fn solver_new_jlrs(
     cones_enums: &VectorJLRS<u8>,
     cones_ints: &VectorJLRS<u64>,
     cones_floats: &VectorJLRS<f64>,
-    json_settings: *const std::os::raw::c_char,
+    json_settings: *const core::ffi::c_char,
 ) -> *mut c_void {
     let P = P.to_CscMatrix();
     let A = A.to_CscMatrix();
@@ -88,7 +88,7 @@ pub(crate) extern "C" fn solver_solve_jlrs(ptr: *mut c_void) -> SolutionJLRS {
 
     // don't drop, since the memory is owned by
     // Julia and we might want to solve again
-    std::mem::forget(solver);
+    core::mem::forget(solver);
 
     out
 }
@@ -101,7 +101,7 @@ pub(crate) extern "C" fn solver_get_info_jlrs(ptr: *mut c_void) -> DefaultInfo<f
 
     // don't drop, since the memory is owned by
     // Julia and we might want to solve again
-    std::mem::forget(solver);
+    core::mem::forget(solver);
 
     info
 }
@@ -114,7 +114,7 @@ pub(crate) extern "C" fn solver_drop_jlrs(ptr: *mut c_void) {
     drop(from_ptr(ptr));
 }
 
-pub(crate) fn settings_from_json(json: *const std::os::raw::c_char) -> DefaultSettings<f64> {
+pub(crate) fn settings_from_json(json: *const core::ffi::c_char) -> DefaultSettings<f64> {
     // convert julia side json to Rust str
     let json = unsafe {
         let slice = CStr::from_ptr(json);

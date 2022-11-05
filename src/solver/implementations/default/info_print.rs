@@ -8,7 +8,7 @@ use crate::solver::core::{
     cones::{CompositeCone, Cone},
     traits::InfoPrint,
 };
-use std::time::Duration;
+use core::time::Duration;
 
 macro_rules! expformat {
     ($fmt:expr,$val:expr) => {
@@ -195,7 +195,7 @@ fn _print_settings<T: FloatT>(settings: &DefaultSettings<T>) {
 }
 
 fn _get_precision_string<T: FloatT>() -> String {
-    (::std::mem::size_of::<T>() * 8).to_string()
+    (::core::mem::size_of::<T>() * 8).to_string()
 }
 
 fn _print_conedims_by_type<T: FloatT>(cones: &CompositeCone<T>, conetag: SupportedConeTag) {

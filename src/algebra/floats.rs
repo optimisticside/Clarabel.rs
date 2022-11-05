@@ -18,9 +18,9 @@ pub trait FloatT:
     + NumAssign
     + Default
     + FromPrimitive
-    + std::fmt::Display
-    + std::fmt::LowerExp
-    + std::fmt::Debug
+    + core::fmt::Display
+    + core::fmt::LowerExp
+    + core::fmt::Debug
 {
 }
 impl FloatT for f32 {}
@@ -47,7 +47,7 @@ macro_rules! impl_as_T {
     ($ty:ty, $ident:ident) => {
         impl<T> AsFloatT<T> for $ty
         where
-            T: std::ops::Mul<T, Output = T> + FromPrimitive + 'static,
+            T: core::ops::Mul<T, Output = T> + FromPrimitive + 'static,
         {
             #[inline]
             fn as_T(&self) -> T {
